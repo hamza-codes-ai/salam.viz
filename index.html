@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixArch Studio | Luxury Architecture & Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <style>
+        /* Ultra Premium Dark Theme */
+        :root {
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --accent: #ff4d4d;
+            --accent-dark: #cc3d3d;
+            --accent-light: #ff6b6b;
+            --text: #ffffff;
+            --text-light: #aaaaaa;
+            --card-bg: #151515;
+            --card-hover: #1e1e1e;
+            --section-padding: 10rem 6rem;
+            --gold: #d4af37;
+            --platinum: #e5e4e2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        /* Luxury Glass Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        header.scrolled {
+            padding: 1.5rem 6rem;
+            background: rgba(5, 5, 5, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        .logo a {
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--gold);
+            transition: all 0.4s ease;
+            font-weight: 600;
+        }
+
+        .logo:hover span {
+            color: var(--accent);
+            text-shadow: 0 0 15px rgba(255, 77, 77, 0.5);
+        }
+
+        .logo::after {
+            content: 'STUDIO';
+            position: absolute;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            right: -3.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            opacity: 0.8;
+        }
+
+        /* Premium Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--gold), var(--accent));
+            transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        nav ul li a:hover::before {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+
+        /* Video Background Hero Section */
+        .hero {
+            height: 110vh;
+            min-height: 900px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 6rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0.4;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 120%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 77, 77, 0.2) 0%, rgba(10, 10, 10, 0) 70%);
+            z-index: -1;
+            animation: pulse 15s infinite alternate;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(10, 10, 10, 0) 70%);
+            z-index: -1;
+            animation: pulse2 18s infinite alternate;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(to right, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1.2s 0.4s forwards;
+            letter-spacing: -1.5px;
+        }
+
+        .hero p {
+            color: var(--text-light);
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin-bottom: 3.5rem;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1.2s 0.7s forwards;
+            font-weight: 300;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1.2s 1s forwards;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--gold), var(--accent));
+            color: var(--dark-bg);
+            padding: 1.2rem 2.8rem;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 77, 77, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            box-shadow: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .btn-outline:hover::before {
+            left: 100%;
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--accent);
+            color: var(--accent-light);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Luxury Portfolio Section */
+        .section {
+            padding: var(--section-padding);
+            position: relative;
+        }
+
+        .dark-section {
+            background-color: var(--darker-bg);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .view-all {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .view-all:hover {
+            color: var(--gold);
+            gap: 1.2rem;
+        }
+
+        .view-all svg {
+            transition: transform 0.4s ease;
+        }
+
+        .view-all:hover svg {
+            transform: translateX(8px);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            aspect-ratio: 4/3;
+            background-color: var(--card-bg);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .portfolio-item:hover {
+            background-color: var(--card-hover);
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .overlay p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Luxury Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .team-member {
+            background-color: var(--card-bg);
+            border-radius: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .team-member:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(212, 175, 55, 0.2);
+            background-color: var(--card-hover);
+        }
+
+        .team-member-img {
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .team-member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .team-member:hover .team-member-img img {
+            transform: scale(1.1);
+        }
+
+        .team-member-info {
+            padding: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .team-member-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .team-member-info p {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+            transform: translateY(-5px);
+            text-shadow: 0 5px 15px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Luxury Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border-color: rgba(212, 175, 55, 0.2);
+            background-color: var(--card-hover);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--gold), var(--accent));
+            transition: height 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .service-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.4s ease;
+        }
+
+        .service-link:hover {
+            color: var(--accent);
+            gap: 1.2rem;
+        }
+
+        /* Luxury Testimonials Slider */
+        .testimonials {
+            position: relative;
+            padding: 8rem 0;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .testimonial-slider {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 6rem;
+            position: relative;
+        }
+
+        .testimonial-slide {
+            display: none;
+            animation: fade 1.5s ease-in-out;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        .testimonial-card {
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 4rem;
+            border-left: 4px solid var(--gold);
+        }
+
+        .testimonial-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .author-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .author-info p {
+            color: var(--gold);
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Slider Controls */
+        .slider-controls {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background-color: var(--gold);
+            transform: scale(1.2);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 5rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 2.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+            color: var(--text);
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-bottom-color: var(--gold);
+        }
+
+        textarea.form-control {
+            resize: none;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--gold), var(--accent));
+            color: var(--dark-bg);
+            border: none;
+            padding: 1.5rem 3.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-block;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 77, 77, 0.4);
+        }
+
+        /* Ultra Luxury Footer */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 8rem 6rem 4rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 5rem;
+            max-width: 1600px;
+            margin: 0 auto 5rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.6rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(to right, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            bottom: -10px;
+            left: 0;
+            background: linear-gradient(to right, var(--gold), var(--accent));
+        }
+
+        .footer-col p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            transform: translateX(8px);
+        }
+
+        .footer-links a svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.4s ease;
+        }
+
+        .footer-links a:hover svg {
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 4rem;
+            text-align: center;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: inline-block;
+            letter-spacing: -1px;
+        }
+
+        .footer-logo a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+            transition: all 0.4s ease;
+            font-weight: 600;
+        }
+
+        .footer-logo:hover span {
+            color: var(--accent);
+            text-shadow: 0 0 15px rgba(255, 77, 77, 0.5);
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-top: 2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .footer-social a {
+            color: var(--text-light);
+            font-size: 1.6rem;
+            transition: all 0.4s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--gold);
+            transform: translateY(-5px);
+            text-shadow: 0 5px 15px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.2;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.2;
+            }
+        }
+
+        @keyframes pulse2 {
+            0% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0.4;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1600px) {
+            :root {
+                --section-padding: 8rem 5rem;
+            }
+
+            header,
+            .hero,
+            .section,
+            footer {
+                padding-left: 5rem;
+                padding-right: 5rem;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            :root {
+                --section-padding: 7rem 4rem;
+            }
+
+            header,
+            .hero,
+            .section,
+            footer {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                min-height: 800px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.8rem, 7vw, 4.5rem);
+            }
+
+            .hero p {
+                font-size: 1.3rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 6rem 3rem;
+            }
+
+            header {
+                padding: 1.5rem 3rem;
+            }
+
+            header.scrolled {
+                padding: 1.2rem 3rem;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .logo::after {
+                right: -3rem;
+            }
+
+            nav ul {
+                gap: 2rem;
+            }
+
+            .hero {
+                padding: 0 3rem;
+                height: auto;
+                min-height: auto;
+                padding-top: 10rem;
+                padding-bottom: 6rem;
+                text-align: center;
+            }
+
+            .hero-content {
+                margin: 0 auto;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn-group {
+                justify-content: center;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-slider {
+                padding: 0 3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            :root {
+                --section-padding: 5rem 2rem;
+            }
+
+            header {
+                padding: 1.2rem 2rem;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            header.scrolled {
+                padding: 1rem 2rem;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .logo::after {
+                content: none;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .hero,
+            .section,
+            footer {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.5rem, 7vw, 3.5rem);
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-slider {
+                padding: 0 2rem;
+            }
+
+            .testimonial-card {
+                padding: 3rem 2rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">Salam<span>Viz</span></div>
+        <nav>
+            <ul>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <!-- Video Background -->
+            <video autoplay muted loop class="video-background">
+                <source
+                    src="V One.m4v.mp4"
+                    type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="hero-content">
+                <h1>Welcome To salamviz.com</h1>
+                <p>We are a multidisciplinary studio working at the intersection of architecture, interior design, and
+                    digital experiences. Our approach combines technical precision with creative vision.</p>
+                <div class="btn-group">
+                    <a href="#work" class="btn">View Projects</a>
+                    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="section dark-section">
+            <div class="section-header">
+                <h2>Selected Works</h2>
+            </div>
+            <div class="grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                        alt="Modern Villa">
+                    <div class="overlay">
+                        <h3>Modern Villa</h3>
+                        <p>Architecture / 2023</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                        alt="Urban Loft">
+                    <div class="overlay">
+                        <h3>Urban Loft</h3>
+                        <p>Interior / 2023</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                        alt="Mountain Retreat">
+                    <div class="overlay">
+                        <h3>Mountain Retreat</h3>
+                        <p>Architecture / 2022</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                        alt="Office Space">
+                    <div class="overlay">
+                        <h3>Office Space</h3>
+                        <p>Interior / 2022</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                        alt="Luxury Penthouse">
+                    <div class="overlay">
+                        <h3>Luxury Penthouse</h3>
+                        <p>Interior / 2023</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                        alt="Beach House">
+                    <div class="overlay">
+                        <h3>Beach House</h3>
+                        <p>Architecture / 2021</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                        alt="Beach House">
+                    <div class="overlay">
+                        <h3>Beach House</h3>
+                        <p>Architecture / 2021</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                        alt="Beach House">
+                    <div class="overlay">
+                        <h3>Beach House</h3>
+                        <p>Architecture / 2021</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                        alt="Beach House">
+                    <div class="overlay">
+                        <h3>Beach House</h3>
+                        <p>Architecture / 2021</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                        alt="Beach House">
+                    <div class="overlay">
+                        <h3>Beach House</h3>
+                        <p>Architecture / 2021</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                        alt="Beach House">
+                    <div class="overlay">
+                        <h3>Beach House</h3>
+                        <p>Architecture / 2021</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                        alt="Beach House">
+                    <div class="overlay">
+                        <h3>Beach House</h3>
+                        <p>Architecture / 2021</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                        alt="Beach House">
+                    <div class="overlay">
+                        <h3>Beach House</h3>
+                        <p>Architecture / 2021</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="team" class="section">
+            <div class="section-header">
+                <h2>Our Team</h2>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                            alt="Sarah Johnson">
+                    </div>
+                    <div class="team-member-info">
+                        <h3></h3>
+                        <p>Lead Architect</p>
+                        <div class="social-links">
+                            <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                            alt="Sajjad Ali">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Sajjad Ali</h3>
+                        <p>Interior Designer</p>
+                        <div class="social-links">
+                            <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                            alt="Abdul Haseeb">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Abdul Haseeb</h3>
+                        <p>3D Visualizer</p>
+                        <div class="social-links">
+                            <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                            alt="Faisal Salam">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Faisal Salam</h3>
+                        <p>Digital Designer</p>
+                        <div class="social-links">
+                            <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                            alt="Faisal Salam">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Faisal Salam</h3>
+                        <p>Digital Designer</p>
+                        <div class="social-links">
+                            <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                            alt="Faisal Salam">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Faisal Salam</h3>
+                        <p>Digital Designer</p>
+                        <div class="social-links">
+                            <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Us</h3>
+                <p>PixArch is an award-winning design studio specializing in architecture, interior design, and digital
+                    experiences. We create spaces that inspire and digital solutions that engage.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#work">Our Work</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Architectural Design</a></li>
+                    <li><a href="#">Interior Design</a></li>
+                    <li><a href="#">3D Visualization</a></li>
+                    <li><a href="#">Digital Experiences</a></li>
+                    <li><a href="#">Consulting</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p>Office #316, Dawood Mall<br>Hyderabad, Sindh<br>Pakistan</p>
+                <p>Email: info@pixarch.com<br>Phone: +1 (555) 123-4567</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-logo">Salam<span>Viz.com</span></div>
+            <div class="footer-social">
+                <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-behance"></ion-icon></a>
+            </div>
+            <p class="copyright">© 2025 Salamviz. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Ionicons for social icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        // Internal JavaScript for enhanced interactions
+        document.addEventListener('DOMContentLoaded', function () {
+            // Smooth scroll for anchor links with offset for fixed header
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        const offset = 80;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Header scroll effect - hide/show with threshold
+            const header = document.querySelector('header');
+            let lastScroll = 0;
+            const scrollThreshold = 100;
+
+            window.addEventListener('scroll', function () {
+                const currentScroll = window.pageYOffset;
+
+                if (currentScroll <= 0) {
+                    header.style.transform = 'translateY(0)';
+                    return;
+                }
+
+                if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
+                    // Scrolling down
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up
+                    header.style.transform = 'translateY(0)';
+                }
+
+                lastScroll = currentScroll;
+            });
+
+            // Portfolio and team item animation
+            const animateItems = (items) => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => {
+                                entry.target.style.opacity = 1;
+                                entry.target.style.transform = 'translateY(0) scale(1)';
+                            }, index * 100);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                items.forEach((item, index) => {
+                    item.style.opacity = 0;
+                    item.style.transform = 'translateY(20px) scale(0.95)';
+                    item.style.transition = `all 0.5s ease-out ${index * 0.1}s`;
+                    observer.observe(item);
+                });
+            };
+
+            animateItems(document.querySelectorAll('.portfolio-item'));
+            animateItems(document.querySelectorAll('.team-member'));
+
+            // Footer year update
+            document.querySelector('.copyright').innerHTML = `© ${new Date().getFullYear()} SalamViz.com  . All rights reserved.`;
+        });
+    </script>
